@@ -1,0 +1,159 @@
+@import "nullstyle.scss";
+
+.wrapper {
+    background-color: #343334;
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    & h1{
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+}
+.form {
+    
+		// .form_margin
+		&_margin {}
+		// .form__item
+		&__item {
+            margin-bottom: 30px;
+        }
+		// .form__label
+		&__label {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+		// .form__btn
+		&__btn {
+            width: 150px;
+            height: 50px;
+            background-color: #775F8D;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+}
+.btn {
+}
+
+.simple-rating {
+    position: relative;
+    font-size: 40px;
+    display: inline-block;
+    &::before{
+        content:'★★★★★';
+        display: block;
+    }
+    // .simple-rating__items
+    &__items {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+    }
+    // .simple-rating__item
+    &__item {
+        position: absolute;
+        width: 0%;
+        height: 0%;
+        opacity: 0;
+        visibility: hidden;
+        top: 0;
+        left: 0;
+        &:checked, &:checked ~ .simple-rating__label{
+            color:#ffd300;
+        }
+    }
+    // .simple-rating__label
+    &__label {
+        flex: 0 0 20%;
+        height: 100%;
+        cursor: pointer;
+        color: #fff;
+        &::before{
+            content:'★';
+            display: block;
+            transition: color 0.3s ease 0s;
+        }
+        &:hover, &:hover ~ &,  &:checked ~ &:hover { // символ ~ означает что св-во применится и ко всем следущим эл-там, поэтому использовали row-reverse и первым шел label 5
+            color:#ffef9f;
+        }
+    }
+}
+
+
+.rating {
+    display: flex;
+    align-items: flex-end;
+    font-size: 40px;
+    line-height: 0.75;
+    transition: opacity 0.3s ease 0s;
+
+    &.rating_sending{
+        opacity: 0.2;
+    }
+
+    &.rating_set &__active,
+    &.rating_set &__item{
+        cursor:pointer;
+    }
+
+    // .rating__body
+    &__body {
+        position: relative;
+        &::before{
+            content:'★★★★★';
+            display: block;
+        }
+    }
+    // .rating__active
+    &__active {
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        &::before{
+            content:'★★★★★';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            color: #ffd300;
+        }
+    }
+    // .rating__items
+    &__items {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    // .rating__item
+    &__item {
+        flex: 0 0 20%;
+        height: 100%;
+        opacity: 0;
+    }
+    // .rating__value
+    &__value {
+        font-size: 50%;
+        line-height: 1;
+        padding:0px 0px 0px 10px;
+    }
+}
+
+
+
+
