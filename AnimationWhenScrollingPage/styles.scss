@@ -1,0 +1,276 @@
+@import "nullstyle.scss";
+
+html,
+body {
+    height: 100%;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 16px;
+}
+
+a {
+    color: #794f45;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 0px 0px 30px 0px;
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+._anim-show{
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+._anim-show._active, 
+._active ._anim-show { // добавляем момент когда объект находится внутри другого объекта у которого есть класс active (класс будет добовляться к объекту который стоит на месте, но анимироваться будет параграф p)
+    opacity: 1;
+    transform: translate(0px, 0px);
+}
+
+.fullscreen {
+    position: relative;
+    min-height: 100vh;
+
+    // .fullscreen__content
+    &__content {
+        z-index: 2;
+        position: relative;
+        max-width: 1400px;
+        margin: 0px auto;
+        min-height: 100vh;
+        display: flex;
+        padding:0px 0px 20vh 0px;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    // .fullscreen__title
+    &__title {
+        font-size: 70px;
+        margin:0px 0px 20px 0px;
+
+        transform: translate(0px, 120%);
+        opacity: 0;
+        transition: all 0.8s ease 0s;
+    }
+
+    &__title._active{
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+
+    // .fullscreen__text
+    &__text {
+        font-size: 30px;
+        line-height: 35px;
+        max-width: 50%;
+
+        transform: translate(0px, 120%);
+        opacity: 0;
+        transition: all 0.8s ease 0s;
+    }
+
+    &__text._active {
+        transform: translate(0px, 0px);
+        opacity: 1;
+        transition: all 0.8s ease 0.4s;
+    }    
+
+    // .fullscreen__image
+    &__image {
+        position: relative;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.6;
+        & img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+}
+
+.page {
+    background-color: #333;
+    position: relative;
+    z-index: 2;
+}
+
+._container {
+    max-width: 1400px;
+    padding: 0px 30px;
+    margin: 0px auto;
+}
+
+.text {
+    padding: 70px 0;
+    font-size: 24px;
+    line-height: 40px;
+
+    // .text__title
+    &__title {
+        font-size: 40px;
+        margin:0px 0px 30px 0px;
+    }
+
+    // .text__item
+    &__item {
+        overflow: hidden;
+        margin:0px 0px 25px 0px;
+    }
+    &__item:last-child{
+        margin:0;
+    }
+}
+
+.moments {
+    background-color:#794f45;
+    padding: 70px 0;
+
+    // .moments__items
+    &__items{
+        display: flex;
+        margin: 0px -20px;
+    }
+
+    // .moments__item
+    &__item{
+        flex: 0 1 25%;
+        padding: 0px 20px;
+        text-align: center;
+    }
+
+    // .moments__image
+    &__image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        margin:0px 0px 10px 0px;
+        transform: scale(0);
+        transition: all 0.8s ease 0s;
+
+        & img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+
+    &__item._active .moments__image {
+        transform: scale(1);
+    }
+
+    &__item._active .moments__text {
+        transform: translate(0px, 0px);
+        opacity: 1;
+        transition: all 0.8s ease 0.6s; 
+    }
+
+    // .moments__text
+    &__text {
+        font-size: 25px;
+        line-height: 35px;
+        transform: translate(0px, 50%);
+        opacity: 0;
+        transition: all 0.3s ease 0s; 
+    }
+}
+
+.list {
+    padding: 70px 0;
+
+    // .list__container
+    &__container {
+        overflow: hidden;
+    }
+
+    // .list__item
+    &__item {
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    &__item._active li:nth-child(1){
+        transition: all 0.8s ease 0s;
+    }
+
+    &__item._active li:nth-child(2){
+        transition: all 0.8s ease 0.2s;
+    }
+
+    &__item._active li:nth-child(3){
+        transition: all 0.8s ease 0.4s;
+    }
+
+    &__item._active li:nth-child(4){
+        transition: all 0.8s ease 0.6s;
+    }
+
+    &__item._active li:nth-child(5){
+        transition: all 0.8s ease 0.8s;
+    }
+
+    // .list__item {   /* в препроцессорах можноиспользовать такой метод  */
+    //     &._active{
+    //         li {
+    //             @for $var from 1 to 6 {
+    //                 $delay: $var * 0.2;
+    //                 &:nth-child(#{$var}){
+    //                     @if $var==1 {
+    //                         transition: transform 0.8s ease 0s;
+    //                     } @else {
+    //                         transition: transform ease #{$delay + s};
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    &__item._active li{
+        transform: translate(0px, 0px);
+    }
+
+    &__item li {
+        list-style: none;
+        position: relative;
+        padding:0px 0px 0px 40px;
+        margin:0px 0px 20px 0px;
+
+        transform: translate(-120%, 0px);
+        transition: all 0.3s ease 0s;
+    }
+
+    &__item li::before{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        content: '';
+        background-color: #77608d;
+        position: absolute;
+        left: 0;
+        top: 8px;
+    }
+    &__item li:last-child {
+        margin: 0;
+    }
+}
