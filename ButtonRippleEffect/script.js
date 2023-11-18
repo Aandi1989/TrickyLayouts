@@ -15,6 +15,10 @@ document.addEventListener("click", function(e){
         ripple.style.top = `${e.pageY - (button.getBoundingClientRect().top + scrollY) - radius}px`;
         ripple.classList.add('ripple');
 
+        // Удаление существующего элемента (опционально)
+        button.dataset.ripple === "once" && button.querySelector('.ripple') ? 
+            button.querySelector('.ripple').remove() : null;
+
         // Добавление элемента
         button.appendChild(ripple);
 
