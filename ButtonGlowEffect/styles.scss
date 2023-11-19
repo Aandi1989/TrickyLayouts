@@ -1,0 +1,60 @@
+@import "nullstyle.scss";
+
+body {
+    background-color: #303640;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    background-color: #303640;
+    &::before{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        backdrop-filter: blur(25px);
+        z-index: 2;
+    }
+    // .button__text
+    &__text {
+        padding: 20px 30px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: rgba(238, 238, 238, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-weight: 700;
+        position: relative;
+        z-index: 2;
+    }
+
+    // .button__glow
+    &__glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        border-radius: 0 50%;
+    }
+
+    // .button__color
+    &__color {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(-90deg, red, orange, yellow, green, blue, indigo, violet);
+        // background-color: yellow;
+    }
+}
