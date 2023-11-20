@@ -1,0 +1,134 @@
+@import "nullstyle.scss";
+
+.wrapper {
+    min-height: 100%;
+    overflow: clip;
+    position: relative;
+}
+
+.page {
+
+    // .page__clouds
+    &__clouds {
+        position: absolute;
+        width: 100%;
+        height: 80%;
+        top: 0;
+        left: 0;
+        display: flex;
+        gap: 10%;
+        justify-content: space-evenly;
+        z-index: 2;
+
+        animation: clouds-show 1s ease forwards;
+    }
+
+    // .page__cloud
+    &__cloud {
+        transform-origin: top;
+
+        &:first-child {
+            animation: clouds 7s infinite ease-in-out alternate;
+        }
+
+        &:last-child {
+            animation: clouds 6.6s infinite ease-in-out alternate-reverse;
+        }
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+    }
+
+    // .page__moon
+    &__moon {}
+}
+
+.moon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // .moon__box
+    &__box {
+        width: 90vh;
+        max-width: 80%;
+        transform: translate(-15%, 0px);
+    }
+
+    // .moon__item
+    &__item {
+        background-color: #000;
+        display: block;
+        padding-bottom: 100%;
+        border-radius: 50%;
+        position: relative;
+        transform-origin: bottom;
+
+        animation: moon 5s ease alternate forwards 0.5s;
+
+        &::before{
+            background-color:#fff;
+            content:'';
+            position: absolute;
+            width: 102%;
+            height: 102%;
+            border-radius:50%;
+            top: -1%;
+            left: -1%;
+            height: 102%;
+            border-radius:50%;
+
+            animation: moon-line 4s ease alternate forwards 0.5s;
+        }
+    }
+}
+
+@keyframes clouds {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes clouds-show {
+    0%{
+        transform: translate(0px, -100%);
+    }
+    100%{
+        transform: translate(0px, 0%);
+    }
+}
+
+@keyframes moon {
+    0% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes moon-line {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(-30%, 0px);
+    }
+}
+
